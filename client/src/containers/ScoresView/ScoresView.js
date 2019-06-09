@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
+import ScoreFilterMenu from '../../components/ScoreFilterMenu/ScoreFilterMenu'
 import 'antd/dist/antd.css';
 import './ScoresView.css';
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 class ScoresView extends Component {
     render() {
@@ -15,23 +16,20 @@ class ScoresView extends Component {
                         <Layout>
                             <Row className='main-content-row'>
                                 <Col
-                                    className='main-content-col'
-                                    span={8}
-                                    style={{ backgroundColor: 'black' }}
+                                    className='main-content-col content-game-list'
+                                    span={11}
                                 >
-                                    col-12
+                                    <ScoreFilterMenu />
                                 </Col>
                                 <Col
-                                    className='main-content-col'
-                                    span={16}
-                                    style={{ backgroundColor: 'blue' }}
+                                    className='main-content-col content-game-details'
+                                    span={13}
                                 >
-                                    col-12
+                                    SELECT A GAME
                                 </Col>
                             </Row>
                         </Layout>
                     </Content>
-                    <Footer>Footer</Footer>
                 </Layout>
             </div>
         );

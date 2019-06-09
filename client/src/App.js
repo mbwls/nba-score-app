@@ -8,6 +8,8 @@ function App() {
             <BrowserRouter basename='nba-scores'>
                 <Switch>
                     <Route exact path='/scores' component={ScoresView} />
+                    <Route exact path='/game/:gameID' />
+                    <Route component={ScoresView} />
                 </Switch>
             </BrowserRouter>
         </div>
