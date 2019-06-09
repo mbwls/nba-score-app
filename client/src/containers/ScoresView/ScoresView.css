@@ -1,0 +1,23 @@
+.scores-view {
+    height: 100vh;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-style: solid;
+    border-color: #f6f6f6;
+    border-width: 0px 2px;
+}
+
+.ant-layout-content,
+.main-content-row,
+.main-content-col {
+    min-height: 80vh;
+}
+
+.ant-layout-header,
+.ant-layout-footer {
+  background: #7dbcea;
+  color: #fff;
+}
