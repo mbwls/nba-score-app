@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
-import ScoreFilterMenu from '../../components/ScoreFilterMenu/ScoreFilterMenu'
+import ScoreFilterMenu from '../../components/ScoreFilterMenu/ScoreFilterMenu';
 import 'antd/dist/antd.css';
 import './ScoresView.css';
+import GameList from '../../components/GameList/GameList';
 
 const { Header, Content } = Layout;
 
@@ -20,6 +21,7 @@ class ScoresView extends Component {
                                     span={11}
                                 >
                                     <ScoreFilterMenu />
+                                    <GameList />
                                 </Col>
                                 <Col
                                     className='main-content-col content-game-details'
