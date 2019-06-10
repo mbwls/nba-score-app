@@ -6,8 +6,9 @@ class ScoreFilterMenu extends Component {
     render() {
         return (
             <div className='score-filter-menu'>
-                <Button type='primary'>Primary</Button>
-                <Button>Default</Button>
+                <Button type='primary'>Filter</Button>
+                <Button>Buttons</Button>
+                <Button>TBD</Button>
             </div>
         );
     }
