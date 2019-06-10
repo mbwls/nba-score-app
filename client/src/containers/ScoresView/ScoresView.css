@@ -13,11 +13,12 @@
 .ant-layout-content,
 .main-content-row,
 .main-content-col {
-    min-height: 90vh;
+    height: 90vh;
 }
 
 .content-game-list {
   box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px 0px;
+  max-height: none;
 }
 
 .content-game-details {
@@ -27,6 +28,6 @@
 .ant-layout-header,
 .ant-layout-footer {
   min-height: 10vh;
-  background: #7dbcea;
+  background: #ff0000;
   color: #fff;
 }
