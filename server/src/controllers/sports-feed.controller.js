@@ -1,0 +1,1 @@
+const SportsFeedService = require('../services/sports-feed.service');
