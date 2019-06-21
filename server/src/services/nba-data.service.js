@@ -4,11 +4,11 @@ const getDailyScores = async () => {
     try {
         return await axios({
             url:
-                'https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/date/20190323/games.json',
+                'https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/date/20181024/games.json',
             method: 'get',
             headers: {
                 Authorization:
-                    `Basic ${process.env.AUTH_KEY}`
+                    `Basic ${process.env.API_TOKEN}`
             }
         });
     } catch (error) {
