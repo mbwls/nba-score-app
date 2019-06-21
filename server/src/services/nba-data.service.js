@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-const getDailyScores = async () => {
+const getDailyScoresRS = async (date) => {
     try {
         return await axios({
             url:
-                'https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/date/20181024/games.json',
+                `https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/date/${date}/games.json`,
             method: 'get',
             headers: {
                 Authorization:
@@ -17,5 +17,5 @@ const getDailyScores = async () => {
 };
 
 module.exports = {
-    getDailyScores
+    getDailyScoresRS
 };
