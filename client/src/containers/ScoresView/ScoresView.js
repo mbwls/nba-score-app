@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
+import DateNav from '../../components/DateNav/DateNav';
 import ScoreFilterMenu from '../../components/ScoreFilterMenu/ScoreFilterMenu';
 import 'antd/dist/antd.css';
 import './ScoresView.css';
@@ -12,7 +13,13 @@ class ScoresView extends Component {
         return (
             <div className='scores-view'>
                 <Layout>
-                    <Header>Header</Header>
+                    <Header>
+                        <Layout>
+                            <Row>
+                                <DateNav />
+                            </Row>
+                        </Layout>
+                    </Header>
                     <Content>
                         <Layout>
                             <Row className='main-content-row'>
