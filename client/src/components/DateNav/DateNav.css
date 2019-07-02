@@ -24,6 +24,21 @@
     cursor: pointer;
 }
 
+.date-label {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    border-radius: 75px;
+}
+
+.current-date {
+    background: green;
+    color: white;
+}
+
+
+
 
 /* START - OVERWRITING ANTD CLASSES */
 .date-btn {
@@ -42,6 +57,7 @@
 .anticon-calendar.ant-calendar-picker-icon {
     right: 50%!important;
     margin-top: -13px!important;
+    cursor: pointer!important;
 }
 
 .ant-calendar-picker-icon {
