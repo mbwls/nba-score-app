@@ -65,6 +65,7 @@ const DateNav = props => {
                 </ul>
             </nav>
             <DatePicker
+                defaultValue={moment(props.dateKey).clone()}
                 className='date-btn'
                 placeholder=''
                 onChange={(date, dateString) => {
