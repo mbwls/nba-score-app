@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
 import DateNav from '../../components/DateNav/DateNav';
-import ScoreFilterMenu from '../../components/ScoreFilterMenu/ScoreFilterMenu';
 import 'antd/dist/antd.css';
 import './ScoresView.css';
 import GameList from '../../components/GameList/GameList';
@@ -31,7 +30,6 @@ class ScoresView extends Component {
                                     className='main-content-col content-game-list'
                                     span={11}
                                 >
-                                    <ScoreFilterMenu />
                                     <GameList {...this.props} />
                                 </Col>
                                 <Col
