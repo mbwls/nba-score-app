@@ -4,6 +4,7 @@
     width: 95%;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px -11px;
+    height: 10vh;
 }
 
 .date-nav ul {
@@ -21,7 +22,6 @@
     color: #989898;
     height: 100%;
     width: 14%;
-    cursor: pointer;
 }
 
 .date-label {
@@ -30,6 +30,11 @@
     font-weight: bold;
     margin: 0 15px;
     border-radius: 75px;
+    position: relative;
+    padding: 10px;
+    top: 25%;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .current-date {
@@ -55,13 +60,15 @@
 }
 
 .anticon-calendar.ant-calendar-picker-icon {
-    right: 50%!important;
-    margin-top: -13px!important;
+    right: 60%!important;
+    margin-top: 25%!important;
     cursor: pointer!important;
+    font-size: 16px!important;
 }
 
-.ant-calendar-picker-icon {
-    font-size: 16px!important;
+.anticon-calendar.ant-calendar-picker-icon svg {
+    width: 1.25em!important;
+    height: 1.25em!important;
 }
 
 .anticon-close-circle.ant-calendar-picker-clear {
