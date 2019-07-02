@@ -32,7 +32,7 @@ class ScoresView extends Component {
                                     span={11}
                                 >
                                     <ScoreFilterMenu />
-                                    <GameList />
+                                    <GameList {...this.props} />
                                 </Col>
                                 <Col
                                     className='main-content-col content-game-details'

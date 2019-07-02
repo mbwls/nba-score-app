@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import APPCONST from '../../config/constants';
 import { DatePicker } from 'antd';
 import './DateNav.css';
 
 const DateNav = props => {
+    const [loadedScoreData, setLoadedScoreData] = useState(false);
+    if (!loadedScoreData) {
+        props.setScoresDate(moment(props.dateKey).clone().format('YYYYMMDD'));
+        setLoadedScoreData(true);
+    }
+    
     let days = [],
         i = 1;
     let weekStart = moment(props.dateKey).subtract(

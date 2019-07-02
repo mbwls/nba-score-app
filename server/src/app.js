@@ -5,7 +5,10 @@ const app = express();
 const CONFIG = require('./config/constant.config');
 const allRoutes = require('./routes/index');
 const path = require('path');
+const cors = require('cors');
 const pe = require('parse-error');
+
+app.use(cors());
 
 /* SET THE VIEW FOLDER TO EMPTY -- NEEDED TO USE REACT index.html */
 let views = app.get('views');

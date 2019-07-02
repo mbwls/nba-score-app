@@ -4,8 +4,11 @@ import APPCONST from '../../config/constants';
 
 const getHeaders = () => ({
     headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        Pragma: 'no-cache',
+        Expires: 0,
+        Accept: 'application/json'
     }
 });
 
