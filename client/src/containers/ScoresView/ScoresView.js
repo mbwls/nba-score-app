@@ -9,22 +9,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../actions/scoresViewAction';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 class ScoresView extends Component {
     render() {
         return (
             <div className='scores-view'>
                 <Layout>
-                    <Header>
-                        <Layout>
-                            <Row>
-                                <DateNav {...this.props} />
-                            </Row>
-                        </Layout>
-                    </Header>
                     <Content>
                         <Layout>
+                            <Row className='header-content-row'>
+                                <DateNav {...this.props} />
+                            </Row>
                             <Row className='main-content-row'>
                                 <Col
                                     className='main-content-col content-game-list'

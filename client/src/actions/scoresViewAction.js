@@ -1,4 +1,4 @@
-import { get, post } from '../utils//axios/axiosRequest';
+import { get } from '../utils//axios/axiosRequest';
 import moment from 'moment';
 
 const requestDailyScores = 'REQUEST_DAILY_SCORES';
