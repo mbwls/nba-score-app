@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScoreCard from '../ScoreCard/ScoreCard';
 import './GameList.css';
 
 const GameList = props => {
-    return (
+    const [loadedRefData, setLoadedRefData] = useState(false);
+    if (!loadedRefData && Object.keys(props.referenceData).length > 0)
+        setLoadedRefData(true);
+
+    return loadedRefData ? (
         <div className='game-list'>
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
-            <ScoreCard />
+            {props.scoresData.map(g => {
+                return (
+                    <ScoreCard
+                        key={g.schedule.id}
+                        gameData={g.schedule}
+                        scoreData={g.score}
+                        dailyRefData={props.referenceData}
+                    />
+                );
+            })}
         </div>
-    );
+    ) : null;
 };
 
 export default GameList;

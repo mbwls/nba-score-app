@@ -13,7 +13,7 @@
 }
 
 .team-info {
-    font-size: 18px;
+    font-size: 17px;
     width: 48%;
 }
 
@@ -27,11 +27,11 @@
 
 .game-score {
     width: 14%;
+    font-size: 18px;
     float: left;
     text-align: center;
     display: block;
     margin: 0;
-    font-weight: bold;
 }
 
 .game-time {
