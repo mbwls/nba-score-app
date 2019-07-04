@@ -66,7 +66,7 @@ const ScoreCard = props => {
                             {props.scoreData.awayScoreTotal}
                         </span>
                         <span> - </span>
-                        <span style={homeWin ? { fontWeight: 'bfold' } : null}>
+                        <span style={homeWin ? { fontWeight: 'bold' } : null}>
                             {props.scoreData.homeScoreTotal}
                         </span>
                         <br />

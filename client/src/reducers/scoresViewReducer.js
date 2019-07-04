@@ -2,7 +2,7 @@ import moment from 'moment';
 import { actionTypes } from '../actions/scoresViewAction';
 
 const initialState = {
-    dateKey: moment('20181125'),
+    dateKey: moment('20190306'),
     scoresData: [],
     referenceData: [],
     selectedGame: {}

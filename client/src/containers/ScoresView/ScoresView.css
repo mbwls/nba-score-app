@@ -28,9 +28,23 @@
 }
 
 .content-game-details {
-  width: 45%;
-  padding: 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px 0px;
   max-height: none;
+  width: 45%;
+}
+
+button.close-details {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border-radius: 100%;
+  background: url('../../config/resources/btn_close.svg') 7px 6.5px no-repeat #f5f5f5;
+  border: none;
+  padding: 14px;
 }
 
 .header-content-row {
