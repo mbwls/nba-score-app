@@ -12,6 +12,7 @@ const GameList = props => {
             {props.scoresData.map(g => {
                 return (
                     <ScoreCard
+                        {...props}
                         key={g.schedule.id}
                         gameData={g.schedule}
                         scoreData={g.score}

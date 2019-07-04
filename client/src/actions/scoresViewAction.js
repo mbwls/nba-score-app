@@ -4,10 +4,12 @@ import moment from 'moment';
 const requestDailyScores = 'REQUEST_DAILY_SCORES';
 const updateDailyReferenceData = 'UPDATE_DAILY_REFERENCE';
 const setScoresDate = 'SET_SCORES_DATE';
+const setSelectedGame = 'SET_SELECTED_GAME';
 
 export const actionTypes = {
     requestDailyScores,
     setScoresDate,
+    setSelectedGame,
     updateDailyReferenceData
 };
 
@@ -44,5 +46,12 @@ export const actionCreators = {
                 payload: response.data.data.references
             });
         }
+    },
+
+    setSelectedGame: gameData => (dispatch, getState) => {
+        dispatch({
+            type: setSelectedGame,
+            payload: gameData
+        });
     }
 };

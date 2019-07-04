@@ -30,20 +30,22 @@ const ScoreCard = props => {
 
     const homeTeamData = getTeamDataByID(props.gameData.homeTeam.id);
     const awayTeamData = getTeamDataByID(props.gameData.awayTeam.id);
+    const homeWin =
+        props.scoreData.homeScoreTotal > props.scoreData.awayScoreTotal;
 
     return loadedRefData && loadedGameData ? (
-        <div className='score-card'>
+        <div
+            className={`score-card${
+                props.selectedGame.id === props.gameData.id ? ' selected' : ''
+            }`}
+            onClick={() => props.setSelectedGame(props.gameData)}
+        >
             {homeTeamData && awayTeamData && props.scoreData ? (
                 <React.Fragment>
                     <div className='team-info away'>
                         <span
                             className='team-name'
-                            style={
-                                props.scoreData.homeScoreTotal <
-                                props.scoreData.awayScoreTotal
-                                    ? { fontWeight: 'bold' }
-                                    : null
-                            }
+                            style={!homeWin ? { fontWeight: 'bold' } : null}
                         >
                             {`${awayTeamData.city} ${awayTeamData.name}`}
                         </span>
@@ -60,25 +62,11 @@ const ScoreCard = props => {
                     </div>
 
                     <div className='game-score'>
-                        <span
-                            style={
-                                props.scoreData.homeScoreTotal <
-                                props.scoreData.awayScoreTotal
-                                    ? { fontWeight: 'bold' }
-                                    : null
-                            }
-                        >
+                        <span style={!homeWin ? { fontWeight: 'bold' } : null}>
                             {props.scoreData.awayScoreTotal}
                         </span>
                         <span> - </span>
-                        <span
-                            style={
-                                props.scoreData.homeScoreTotal >
-                                props.scoreData.awayScoreTotal
-                                    ? { fontWeight: 'bold' }
-                                    : null
-                            }
-                        >
+                        <span style={homeWin ? { fontWeight: 'bold' } : null}>
                             {props.scoreData.homeScoreTotal}
                         </span>
                         <br />
@@ -98,12 +86,7 @@ const ScoreCard = props => {
                         </div>
                         <span
                             className='team-name'
-                            style={
-                                props.scoreData.homeScoreTotal >
-                                props.scoreData.awayScoreTotal
-                                    ? { fontWeight: 'bold' }
-                                    : null
-                            }
+                            style={homeWin ? { fontWeight: 'bold' } : null}
                         >
                             {`${homeTeamData.city} ${homeTeamData.name}`}
                         </span>

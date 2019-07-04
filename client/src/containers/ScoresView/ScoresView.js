@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Layout, Row, Col } from 'antd';
 import DateNav from '../../components/DateNav/DateNav';
+import GameList from '../../components/GameList/GameList';
+import GameDetails from '../../components/GameDetails/GameDetails';
 import 'antd/dist/antd.css';
 import './ScoresView.css';
-import GameList from '../../components/GameList/GameList';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -23,7 +25,11 @@ class ScoresView extends Component {
                             </Row>
                             <Row className='main-content-row'>
                                 <Col
-                                    className='main-content-col content-game-list'
+                                    className={`main-content-col content-game-list${
+                                        _.isEmpty(this.props.selectedGame)
+                                            ? ' open'
+                                            : ''
+                                    }`}
                                     span={11}
                                 >
                                     <GameList {...this.props} />
@@ -32,7 +38,13 @@ class ScoresView extends Component {
                                     className='main-content-col content-game-details'
                                     span={13}
                                 >
-                                    SELECT A GAME
+                                    <button
+                                        className='close-details'
+                                        onClick={() =>
+                                            this.props.setSelectedGame({})
+                                        }
+                                    />
+                                    <GameDetails {...this.props} />
                                 </Col>
                             </Row>
                         </Layout>
