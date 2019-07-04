@@ -4,7 +4,8 @@ import { actionTypes } from '../actions/scoresViewAction';
 const initialState = {
     dateKey: moment('20181125'),
     scoresData: [],
-    referenceData: []
+    referenceData: [],
+    selectedGame: {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ export const reducer = (state = initialState, action) => {
             return { ...state, scoresData: action.payload };
         case actionTypes.updateDailyReferenceData:
             return { ...state, referenceData: action.payload };
+        case actionTypes.setSelectedGame:
+            return { ...state, selectedGame: action.payload };
         default:
             return state;
     }
