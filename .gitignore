@@ -1,2 +1,5 @@
 .vscode
 .sonarlint
+/node_modules
+.env
+package-lock.json
