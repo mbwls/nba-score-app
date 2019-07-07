@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import ScoresView from './containers/ScoresView/ScoresView';
 
+
 function App() {
     return (
         <div className='App'>
