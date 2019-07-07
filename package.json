@@ -4,8 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --inspect -r dotenv/config server/src/app.js dotenv_config_path=./.env",
-        "watch": "env-cmd .env nodemon server/src/app.js"
+        "start": "node server/src/app.js",
+        "watch": "nodemon --inspect -r dotenv/config server/src/app.js dotenv_config_path=./.env",
+        "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "repository": {
         "type": "git",
