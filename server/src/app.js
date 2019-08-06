@@ -11,13 +11,13 @@ const pe = require('parse-error');
 app.use(cors());
 
 /* SET THE VIEW FOLDER TO EMPTY -- NEEDED TO USE REACT index.html */
-let views = app.get('views');
-app.set(
-    'views',
-    typeof views == 'string'
-        ? [views]
-        : views || [].concat([path.join(__dirname, '../../client/build')])
-);
+// let views = app.get('views');
+// app.set(
+//     'views',
+//     typeof views == 'string'
+//         ? [views]
+//         : views || [].concat([path.join(__dirname, '../../client/build')])
+// );
 
 /* PATH TO STATIC FOLDER FOR REACT BUILD FILES */
 app.use(
