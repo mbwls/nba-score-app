@@ -1,26 +1,23 @@
 .details-header {
-    width: 80%;
+    width: 100%;
     float: left;
-    margin-left: 10%;
-    padding: 20px 0 10px 0;
+    padding: 25px 0;
 }
 
-.header-logo {
-    width: 35%;
-    float: left;
+.details-header .team-info {
+    width: 100%;
+    font-size: 24px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
 }
 
-.header-score {
-    color: #333;
-    margin-top: 35px;
-    font-size: 32px;
-    float: left;
-    width: 30%;
-    text-align: center;
+.details-header .team-info:first-child {
+    border-bottom: 2px solid #f5f5f5;
 }
 
-.header-team-name {
-    color: #333;
-    text-align: center;
-    font-size: 18px;
+.details-header .team-score {
+    margin-left: auto;
+    margin-right: 10px;
+    text-align: right;
 }
