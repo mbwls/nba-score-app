@@ -1,0 +1,21 @@
+.box-score {
+    margin-bottom: 30px;
+}
+
+.box-flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.box-teams {
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 0;
+}
+
+.box-teams .team-info {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}

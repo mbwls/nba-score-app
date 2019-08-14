@@ -7,4 +7,12 @@
     overflow-y: scroll;
 }
 
+.card-header {
+    min-height: 32px;
+    line-height: 32px;
+    width: 100%;
+    background-color: #f2f4f7;
+    padding: 0 10px;
+}
+
 .game-details::-webkit-scrollbar { width: 0 !important }
