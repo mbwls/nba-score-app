@@ -10,7 +10,7 @@ const pe = require('parse-error');
 
 app.use(cors());
 
-// /* SET THE VIEW FOLDER TO EMPTY -- NEEDED TO USE REACT index.html */
+/* SET THE VIEW FOLDER TO EMPTY -- NEEDED TO USE REACT index.html */
 let views = app.get('views');
 app.set(
     'views',
@@ -19,26 +19,11 @@ app.set(
         : views || [].concat([path.join(__dirname, '../../client/build')])
 );
 
+/* PATH TO STATIC FOLDER FOR REACT BUILD FILES */
 app.use(express.static(path.join(__dirname, '../../client/build')));
 app.get('/nba-scores', (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
 });
-
-
-// /* PATH TO STATIC FOLDER FOR REACT BUILD FILES */
-// app.use(
-//     `${CONFIG.app_route}/static`,
-//     express.static(path.join(__dirname, '../../client/build/static'), {
-//         maxAge: '30m'
-//     })
-// );
-
-// /* IF NO ROUTE MATCHES FALL BACK TO REACT ROUTES */
-// app.use(function(req, res, next) {
-//     req.path.includes(CONFIG.app_route)
-//         ? res.sendFile(path.join(__dirname, '../../client/build/index.html'))
-//         : next();
-// });
 
 /* INITIALIZE ALL ROUTES TO APP */
 app.use(CONFIG.app_route, allRoutes);
