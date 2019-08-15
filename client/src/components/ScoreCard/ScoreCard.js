@@ -33,12 +33,17 @@ const ScoreCard = props => {
     const homeWin =
         props.scoreData.homeScoreTotal > props.scoreData.awayScoreTotal;
 
+    const scoreCardClick = () => {
+        props.setSelectedGame(props.gameData);
+        props.setGameData(props.gameData.id);
+    }
+
     return loadedRefData && loadedGameData ? (
         <div
             className={`score-card${
                 props.selectedGame.id === props.gameData.id ? ' selected' : ''
             }`}
-            onClick={() => props.setSelectedGame(props.gameData)}
+            onClick={() => scoreCardClick()}
         >
             {homeTeamData && awayTeamData && props.scoreData ? (
                 <React.Fragment>

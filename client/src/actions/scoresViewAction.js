@@ -5,12 +5,14 @@ const requestDailyScores = 'REQUEST_DAILY_SCORES';
 const updateDailyReferenceData = 'UPDATE_DAILY_REFERENCE';
 const setScoresDate = 'SET_SCORES_DATE';
 const setSelectedGame = 'SET_SELECTED_GAME';
+const setGameData = 'SET_GAME_DATA';
 
 export const actionTypes = {
     requestDailyScores,
     setScoresDate,
     setSelectedGame,
-    updateDailyReferenceData
+    updateDailyReferenceData,
+    setGameData
 };
 
 export const actionCreators = {
@@ -53,5 +55,22 @@ export const actionCreators = {
             type: setSelectedGame,
             payload: gameData
         });
+    },
+
+    setGameData: (gameID) => async (dispatch, getState) => {
+        let payload = {};
+        let response = await get(
+            `nba-scores/nba-data/getGameDataRS?date=${getState().scoresView.dateKey}&gameID=${gameID}`
+        );
+        if (response.data.success) {
+            dispatch({
+                type: setGameData,
+                payload: {
+                    ...payload,
+                    stats: response.data.data.stats,
+                    scoring: response.data.data.scoring
+                }
+            });
+        }
     }
 };

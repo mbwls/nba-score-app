@@ -4,14 +4,6 @@
     font-weight: 500;
 }
 
-.card-header {
-    min-height: 32px;
-    line-height: 32px;
-    width: 100%;
-    background-color: #f2f4f7;
-    padding: 0 10px;
-}
-
 .card-team-abbr {
     width: 50%;
     display: inline-block;

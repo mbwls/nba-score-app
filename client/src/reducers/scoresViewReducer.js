@@ -5,7 +5,8 @@ const initialState = {
     dateKey: moment('20190306'),
     scoresData: [],
     referenceData: [],
-    selectedGame: {}
+    selectedGame: {},
+    gameData: {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -18,6 +19,8 @@ export const reducer = (state = initialState, action) => {
             return { ...state, referenceData: action.payload };
         case actionTypes.setSelectedGame:
             return { ...state, selectedGame: action.payload };
+        case actionTypes.setGameData:
+            return { ...state, gameData: action.payload };
         default:
             return state;
     }
