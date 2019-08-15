@@ -8,6 +8,18 @@ const getDailyScoresRS = async (req, res) => {
         : errorResponse(res, result);
 };
 
+const getGameDataRS = async (req, res) => {
+    let result = await NBADataService.getGameDataRS(
+        req.query.gameID,
+        req.query.date
+    );
+    
+    return result.data
+        ? successResponse(res, { data: result.data })
+        : errorResponse(res, result);
+};
+
 module.exports = {
-    getDailyScoresRS
+    getDailyScoresRS,
+    getGameDataRS
 };
