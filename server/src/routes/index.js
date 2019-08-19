@@ -8,5 +8,6 @@ router.get('/', (req, res) => {
 
 // INDIVIDUAL ROUTES
 router.use('/nba-data', require('./nba-data.route'));
+router.use('/balldontlie-api', require('./balldontlie-api.route'));
 
 module.exports = router;

@@ -32,21 +32,26 @@ export const actionCreators = {
         )
             return;
 
+        // let response = await get(
+        //     `nba-scores/nba-data/getDailyScoresRS?date=${moment(newDate)
+        //         .clone()
+        //         .format('YYYYMMDD')}`
+        // );
         let response = await get(
-            `nba-scores/nba-data/getDailyScoresRS?date=${moment(newDate)
+            `nba-scores/balldontlie-api/getDailyScores?date=${moment(newDate)
                 .clone()
-                .format('YYYYMMDD')}`
+                .format('YYYY-MM-DD')}`
         );
         if (response.data.success) {
             dispatch({ type: setScoresDate, payload: newDate });
             dispatch({
                 type: requestDailyScores,
-                payload: response.data.data.games
+                payload: response.data.data.data
             });
-            dispatch({
-                type: updateDailyReferenceData,
-                payload: response.data.data.references
-            });
+            // dispatch({
+            //     type: updateDailyReferenceData,
+            //     payload: response.data.data.references
+            // });
         }
     },
 
