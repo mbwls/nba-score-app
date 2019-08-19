@@ -2,7 +2,7 @@ import { get } from '../utils//axios/axiosRequest';
 import moment from 'moment';
 
 const requestDailyScores = 'REQUEST_DAILY_SCORES';
-const updateDailyReferenceData = 'UPDATE_DAILY_REFERENCE';
+const setReferenceData = 'SET_REFERENCE_DATA';
 const setScoresDate = 'SET_SCORES_DATE';
 const setSelectedGame = 'SET_SELECTED_GAME';
 const setGameData = 'SET_GAME_DATA';
@@ -11,7 +11,7 @@ export const actionTypes = {
     requestDailyScores,
     setScoresDate,
     setSelectedGame,
-    updateDailyReferenceData,
+    setReferenceData,
     setGameData
 };
 
@@ -31,12 +31,7 @@ export const actionCreators = {
             getState().scoresView.scoresData.length > 0
         )
             return;
-
-        // let response = await get(
-        //     `nba-scores/nba-data/getDailyScoresRS?date=${moment(newDate)
-        //         .clone()
-        //         .format('YYYYMMDD')}`
-        // );
+            
         let response = await get(
             `nba-scores/balldontlie-api/getDailyScores?date=${moment(newDate)
                 .clone()
@@ -48,10 +43,17 @@ export const actionCreators = {
                 type: requestDailyScores,
                 payload: response.data.data.data
             });
-            // dispatch({
-            //     type: updateDailyReferenceData,
-            //     payload: response.data.data.references
-            // });
+        }
+    },
+
+    setReferenceData: () => async (dispatch, getState) => {
+        if (getState().scoresView.referenceData.length > 0) return;
+        let response = await get(`nba-scores/balldontlie-api/getReferenceData`);
+        if (response.data.success) {
+            dispatch({
+                type: setReferenceData,
+                payload: response.data.data.data
+            });
         }
     },
 
@@ -62,10 +64,12 @@ export const actionCreators = {
         });
     },
 
-    setGameData: (gameID) => async (dispatch, getState) => {
+    setGameData: gameID => async (dispatch, getState) => {
         let payload = {};
         let response = await get(
-            `nba-scores/nba-data/getGameDataRS?date=${getState().scoresView.dateKey}&gameID=${gameID}`
+            `nba-scores/nba-data/getGameDataRS?date=${
+                getState().scoresView.dateKey
+            }&gameID=${gameID}`
         );
         if (response.data.success) {
             dispatch({

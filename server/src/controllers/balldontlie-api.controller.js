@@ -8,6 +8,14 @@ const getDailyScores = async (req, res) => {
         : errorResponse(res, result);
 };
 
+const getReferenceData = async (req, res) => {
+    let result = await BallDontLieAPIService.getReferenceData();
+    return result.data
+        ? successResponse(res, { data: result.data })
+        : errorResponse(res, result);
+};
+
 module.exports = {
-    getDailyScores
+    getDailyScores,
+    getReferenceData
 };

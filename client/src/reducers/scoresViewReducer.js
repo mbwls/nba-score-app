@@ -15,7 +15,7 @@ export const reducer = (state = initialState, action) => {
             return { ...state, dateKey: action.payload };
         case actionTypes.requestDailyScores:
             return { ...state, scoresData: action.payload };
-        case actionTypes.updateDailyReferenceData:
+        case actionTypes.setReferenceData:
             return { ...state, referenceData: action.payload };
         case actionTypes.setSelectedGame:
             return { ...state, selectedGame: action.payload };

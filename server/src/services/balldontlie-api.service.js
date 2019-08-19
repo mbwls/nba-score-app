@@ -11,6 +11,18 @@ const getDailyScores = async date => {
     }
 };
 
+const getReferenceData = async () => {
+    try {
+        return await axios({
+            url: `https://www.balldontlie.io/api/v1/teams?per_page=30`,
+            method: 'get'
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
-    getDailyScores
+    getDailyScores,
+    getReferenceData
 };
