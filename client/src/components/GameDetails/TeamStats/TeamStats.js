@@ -20,8 +20,8 @@ const TeamStats = props => {
         <div className='team-stats'>
             <div className='header-title'>Team Stats</div>
             <div className='card-header'>
-                <div className='home card-team-abbr'>OKC</div>
-                <div className='away card-team-abbr'>MIN</div>
+                <div className='home card-team-abbr'>{props.selectedGame.visitor_team.abbreviation}</div>
+                <div className='away card-team-abbr'>{props.selectedGame.home_team.abbreviation}</div>
             </div>
 
             {/* FIELD GOAL % */}
