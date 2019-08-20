@@ -9,34 +9,23 @@ const ScoreCard = props => {
         setLoadedGameData(true);
 
     const [loadedRefData, setLoadedRefData] = useState(false);
-    if (!loadedRefData && props.dailyRefData.teamReferences !== undefined)
+    if (!loadedRefData && props.referenceData.length > 0)
         setLoadedRefData(true);
     /* END HOOKS */
 
     const getTeamDataByID = teamID => {
-        return _.find(props.dailyRefData.teamReferences, { id: teamID });
+        return _.find(props.referenceData, { id: teamID });
     };
 
-    const iconKeyMapping = teamKey => {
-        switch (teamKey) {
-            case 'BRO':
-                return 'BKN';
-            case 'OKL':
-                return 'OKC';
-            default:
-                return teamKey;
-        }
-    };
-
-    const homeTeamData = getTeamDataByID(props.gameData.homeTeam.id);
-    const awayTeamData = getTeamDataByID(props.gameData.awayTeam.id);
+    const homeTeamData = getTeamDataByID(props.gameData.home_team.id);
+    const awayTeamData = getTeamDataByID(props.gameData.visitor_team.id);
     const homeWin =
-        props.scoreData.homeScoreTotal > props.scoreData.awayScoreTotal;
+        props.gameData.home_team_score > props.gameData.visitor_team_score;
 
     const scoreCardClick = () => {
         props.setSelectedGame(props.gameData);
         props.setGameData(props.gameData.id);
-    }
+    };
 
     return loadedRefData && loadedGameData ? (
         <div
@@ -45,7 +34,7 @@ const ScoreCard = props => {
             }`}
             onClick={() => scoreCardClick()}
         >
-            {homeTeamData && awayTeamData && props.scoreData ? (
+            {homeTeamData && awayTeamData && props.gameData ? (
                 <React.Fragment>
                     <div className='team-info away'>
                         <span
@@ -59,20 +48,20 @@ const ScoreCard = props => {
                                 alt='away-logo'
                                 width={45}
                                 height={45}
-                                src={`https://www.nba.com/assets/logos/teams/primary/web/${iconKeyMapping(
+                                src={`https://www.nba.com/assets/logos/teams/primary/web/${
                                     awayTeamData.abbreviation
-                                )}.svg`}
+                                }.svg`}
                             />
                         </div>
                     </div>
 
                     <div className='game-score'>
                         <span style={!homeWin ? { fontWeight: 'bold' } : null}>
-                            {props.scoreData.awayScoreTotal}
+                            {props.gameData.visitor_team_score}
                         </span>
                         <span> - </span>
                         <span style={homeWin ? { fontWeight: 'bold' } : null}>
-                            {props.scoreData.homeScoreTotal}
+                            {props.gameData.home_team_score}
                         </span>
                         <br />
                         <span className='game-time'>Final</span>
@@ -84,9 +73,9 @@ const ScoreCard = props => {
                                 alt='home-logo'
                                 width={45}
                                 height={45}
-                                src={`https://www.nba.com/assets/logos/teams/primary/web/${iconKeyMapping(
+                                src={`https://www.nba.com/assets/logos/teams/primary/web/${
                                     homeTeamData.abbreviation
-                                )}.svg`}
+                                }.svg`}
                             />
                         </div>
                         <span

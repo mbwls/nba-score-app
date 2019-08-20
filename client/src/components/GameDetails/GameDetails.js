@@ -8,7 +8,7 @@ const GameDetails = props => {
     return (
         <div className='game-details'>
             <DetailsHeader {...props} />
-            <BoxScore {...props} />
+            {/* <BoxScore {...props} /> */}
             <TeamStats {...props} />
         </div>
     );

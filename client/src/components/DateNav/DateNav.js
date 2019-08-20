@@ -5,12 +5,23 @@ import { DatePicker } from 'antd';
 import './DateNav.css';
 
 const DateNav = props => {
+    // BEGIN HOOKS
     const [loadedScoreData, setLoadedScoreData] = useState(false);
     if (!loadedScoreData) {
-        props.setScoresDate(moment(props.dateKey).clone().format('YYYYMMDD'));
+        props.setScoresDate(
+            moment(props.dateKey)
+                .clone()
+                .format('YYYYMMDD')
+        );
         setLoadedScoreData(true);
     }
-    
+    const [loadedReferenceData, setLoadedReferenceData] = useState(false);
+    if (!loadedReferenceData) {
+        props.setReferenceData();
+        setLoadedReferenceData(true);
+    }
+    // END HOOKS
+
     let days = [],
         i = 1;
     let weekStart = moment(props.dateKey).subtract(

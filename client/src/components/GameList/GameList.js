@@ -13,10 +13,8 @@ const GameList = props => {
                 return (
                     <ScoreCard
                         {...props}
-                        key={g.schedule.id}
-                        gameData={g.schedule}
-                        scoreData={g.score}
-                        dailyRefData={props.referenceData}
+                        key={g.id}
+                        gameData={g}
                     />
                 );
             })}
