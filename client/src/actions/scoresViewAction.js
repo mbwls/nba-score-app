@@ -1,5 +1,6 @@
 import { get } from '../utils//axios/axiosRequest';
 import moment from 'moment';
+import _ from 'lodash';
 
 const requestDailyScores = 'REQUEST_DAILY_SCORES';
 const setReferenceData = 'SET_REFERENCE_DATA';
@@ -31,7 +32,7 @@ export const actionCreators = {
             getState().scoresView.scoresData.length > 0
         )
             return;
-            
+
         let response = await get(
             `nba-scores/balldontlie-api/getDailyScores?date=${moment(newDate)
                 .clone()
@@ -67,17 +68,70 @@ export const actionCreators = {
     setGameData: gameID => async (dispatch, getState) => {
         let payload = {};
         let response = await get(
-            `nba-scores/nba-data/getGameDataRS?date=${
-                getState().scoresView.dateKey
-            }&gameID=${gameID}`
+            `nba-scores/balldontlie-api/getGameData?gameID=${gameID}`
         );
+
+        const playerStatsByTeam = (rawStats, team) => {
+            return rawStats.filter(item => {
+                return (
+                    item.team.id ==
+                    getState().scoresView.selectedGame[`${team}_team`].id
+                );
+            });
+        };
+
+        const totalStatsByTeam = playerStats => {
+            let totals = {};
+            const sliderMetrics = [
+                'fgm',
+                'fga',
+                'fg3m',
+                'fg3a',
+                'ftm',
+                'fta',
+                'reb',
+                'oreb',
+                'ast',
+                'stl',
+                'blk',
+                'turnover',
+                'pf'
+            ];
+
+            sliderMetrics.map(val => {
+                return (totals[val] = _.sumBy(playerStats, o => {
+                    return o[val];
+                }));
+            });
+
+            // CALCULATE PERCENTAGES FOR RATE STATS
+            totals.fg_pct = parseFloat(
+                ((totals.fgm / totals.fga) * 100).toFixed(1)
+            );
+            totals.fg3_pct = parseFloat(
+                ((totals.fg3m / totals.fg3a) * 100).toFixed(1)
+            );
+            totals.ft_pct = parseFloat(
+                ((totals.ftm / totals.fta) * 100).toFixed(1)
+            );
+
+            return totals;
+        };
+
         if (response.data.success) {
+            let rawStats = response.data.data.data;
+            let homePlayers = playerStatsByTeam(rawStats, 'home'),
+                awayPlayers = playerStatsByTeam(rawStats, 'visitor');
+
+            let homeTotals = totalStatsByTeam(homePlayers),
+                awayTotals = totalStatsByTeam(awayPlayers);
+
             dispatch({
                 type: setGameData,
                 payload: {
                     ...payload,
-                    stats: response.data.data.stats,
-                    scoring: response.data.data.scoring
+                    home: { players: homePlayers, team: homeTotals },
+                    away: { players: awayPlayers, team: awayTotals }
                 }
             });
         }

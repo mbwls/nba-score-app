@@ -4,5 +4,6 @@ const BallDontLieAPIController = require('../controllers/balldontlie-api.control
 
 router.get('/getDailyScores', BallDontLieAPIController.getDailyScores);
 router.get('/getReferenceData', BallDontLieAPIController.getReferenceData);
+router.get('/getGameData', BallDontLieAPIController.getGameData);
 
 module.exports = router;

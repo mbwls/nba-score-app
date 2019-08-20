@@ -15,7 +15,15 @@ const getReferenceData = async (req, res) => {
         : errorResponse(res, result);
 };
 
+const getGameData = async (req, res) => {
+    let result = await BallDontLieAPIService.getGameData(req.query.gameID);
+    return result.data
+        ? successResponse(res, { data: result.data })
+        : errorResponse(res, result);
+};
+
 module.exports = {
     getDailyScores,
-    getReferenceData
+    getReferenceData,
+    getGameData
 };

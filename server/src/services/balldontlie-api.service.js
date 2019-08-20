@@ -22,7 +22,19 @@ const getReferenceData = async () => {
     }
 };
 
+const getGameData = async gameID => {
+    try {
+        return await axios({
+            url: `https://www.balldontlie.io/api/v1/stats?per_page=100&game_ids[]=${gameID}`,
+            method: 'get'
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     getDailyScores,
-    getReferenceData
+    getReferenceData,
+    getGameData
 };
