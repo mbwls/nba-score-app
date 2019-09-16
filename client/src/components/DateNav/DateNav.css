@@ -80,6 +80,7 @@
 @media (max-width: 820px) {
     .date-label {
         margin: 0 20%;
+        transition: none;
     }
 
     .date-nav ul li {
