@@ -49,3 +49,33 @@
     vertical-align: middle;
     margin: 0 10px;
 }
+
+.content-game-list {
+  box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px 0px;
+  max-height: none;
+  width: 55%;
+  transition: 0.5s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 820px) {
+    .game-score {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-list .icon-wrapper {
+        margin: 0px 35%;
+    }
+
+    .game-score {
+        width: 95px;
+        font-size: 18px;
+    }
+
+    .game-time {
+        font-size: 12px;
+    }
+}

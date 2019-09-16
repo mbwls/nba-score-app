@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Media from 'react-media';
 import _ from 'lodash';
 import './ScoreCard.css';
 
@@ -28,66 +29,113 @@ const ScoreCard = props => {
     };
 
     return loadedRefData && loadedGameData ? (
-        <div
-            className={`score-card${
-                props.selectedGame.id === props.gameData.id ? ' selected' : ''
-            }`}
-            onClick={() => scoreCardClick()}
-        >
-            {homeTeamData && awayTeamData && props.gameData ? (
-                <React.Fragment>
-                    <div className='team-info away'>
-                        <span
-                            className='team-name'
-                            style={!homeWin ? { fontWeight: 'bold' } : null}
-                        >
-                            {`${awayTeamData.city} ${awayTeamData.name}`}
-                        </span>
-                        <div className='icon-wrapper'>
-                            <img
-                                alt='away-logo'
-                                width={45}
-                                height={45}
-                                src={`https://www.nba.com/assets/logos/teams/primary/web/${
-                                    awayTeamData.abbreviation
-                                }.svg`}
-                            />
-                        </div>
-                    </div>
+        <Media queries={{
+            small: '(max-width: 480px)',
+            medium: '(min-width: 481px) and (max-width: 820px)',
+            large: '(min-width: 821px)'
+        }}>
+            {matches => (
+                <div
+                    className={`score-card${
+                        props.selectedGame.id === props.gameData.id ? ' selected' : ''
+                        }`}
+                    onClick={() => scoreCardClick()}
+                >
+                    {homeTeamData && awayTeamData && props.gameData ? (
+                        <React.Fragment>
+                            <div className='team-info away'>
+                                {matches.medium && <span
+                                    className='team-name'
+                                    style={!homeWin ? { fontWeight: 'bold' } : null}
+                                >
+                                    {`${awayTeamData.name}`}
+                                </span>}
 
-                    <div className='game-score'>
-                        <span style={!homeWin ? { fontWeight: 'bold' } : null}>
-                            {props.gameData.visitor_team_score}
-                        </span>
-                        <span> - </span>
-                        <span style={homeWin ? { fontWeight: 'bold' } : null}>
-                            {props.gameData.home_team_score}
-                        </span>
-                        <br />
-                        <span className='game-time'>Final</span>
-                    </div>
+                                {matches.large && <span
+                                    className='team-name'
+                                    style={!homeWin ? { fontWeight: 'bold' } : null}
+                                >
+                                    {`${awayTeamData.city} ${awayTeamData.name}`}
+                                </span>}
 
-                    <div className='team-info home'>
-                        <div className='icon-wrapper'>
-                            <img
-                                alt='home-logo'
-                                width={45}
-                                height={45}
-                                src={`https://www.nba.com/assets/logos/teams/primary/web/${
-                                    homeTeamData.abbreviation
-                                }.svg`}
-                            />
-                        </div>
-                        <span
-                            className='team-name'
-                            style={homeWin ? { fontWeight: 'bold' } : null}
-                        >
-                            {`${homeTeamData.city} ${homeTeamData.name}`}
-                        </span>
-                    </div>
-                </React.Fragment>
-            ) : null}
-        </div>
+                                {matches.small && <div className='icon-wrapper'>
+                                    <img
+                                        alt='away-logo'
+                                        width={70}
+                                        height={70}
+                                        src={`https://www.nba.com/assets/logos/teams/primary/web/${
+                                            awayTeamData.abbreviation
+                                            }.svg`}
+                                    />
+                                </div>}
+
+                                {(matches.medium || matches.large) && <div className='icon-wrapper'>
+                                    <img
+                                        alt='away-logo'
+                                        width={45}
+                                        height={45}
+                                        src={`https://www.nba.com/assets/logos/teams/primary/web/${
+                                            awayTeamData.abbreviation
+                                            }.svg`}
+                                    />
+                                </div>}
+                            </div>
+
+                            <div className='game-score'>
+                                <span style={!homeWin ? { fontWeight: 'bold' } : null}>
+                                    {props.gameData.visitor_team_score}
+                                </span>
+                                <span> - </span>
+                                <span style={homeWin ? { fontWeight: 'bold' } : null}>
+                                    {props.gameData.home_team_score}
+                                </span>
+                                <br />
+                                <span className='game-time'>Final</span>
+                            </div>
+
+                            <div className='team-info home'>
+                                {matches.small && <div className='icon-wrapper'>
+                                    <img
+                                        alt='home-logo'
+                                        width={70}
+                                        height={70}
+                                        src={`https://www.nba.com/assets/logos/teams/primary/web/${
+                                            homeTeamData.abbreviation
+                                            }.svg`}
+                                    />
+                                </div>}
+
+                                {(matches.medium || matches.large) && <div className='icon-wrapper'>
+                                    <img
+                                        alt='home-logo'
+                                        width={45}
+                                        height={45}
+                                        src={`https://www.nba.com/assets/logos/teams/primary/web/${
+                                            homeTeamData.abbreviation
+                                            }.svg`}
+                                    />
+                                </div>}
+
+                                {matches.medium && <span
+                                    className='team-name'
+                                    style={homeWin ? { fontWeight: 'bold' } : null}
+                                >
+                                    {`${homeTeamData.name}`}
+                                </span>}
+
+                                {matches.large && <span
+                                    className='team-name'
+                                    style={homeWin ? { fontWeight: 'bold' } : null}
+                                >
+                                    {`${homeTeamData.city} ${homeTeamData.name}`}
+                                </span>}
+                            </div>
+                        </React.Fragment>
+                    ) : null}
+                </div>
+            )}
+
+        </Media>
     ) : null;
 };
 
