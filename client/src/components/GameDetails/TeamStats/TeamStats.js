@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import _ from 'lodash';
 import './TeamStats.css';
 import StatBar from '../StatBar/StarBar';
 
@@ -20,8 +21,8 @@ const TeamStats = props => {
         <div className='team-stats'>
             <div className='header-title'>Team Stats</div>
             <div className='card-header'>
-                <div className='home card-team-abbr'>{props.selectedGame.visitor_team.abbreviation}</div>
-                <div className='away card-team-abbr'>{props.selectedGame.home_team.abbreviation}</div>
+                <div className='home card-team-abbr'>{_.isEmpty(props.selectedGame) ? '' : props.selectedGame.visitor_team.abbreviation}</div>
+                <div className='away card-team-abbr'>{_.isEmpty(props.selectedGame) ? '' : props.selectedGame.home_team.abbreviation}</div>
             </div>
 
             {/* FIELD GOAL % */}
@@ -29,11 +30,11 @@ const TeamStats = props => {
                 metric='FG (%)'
                 homeLabel={`${homeStats.fgm}/${
                     homeStats.fga
-                } (${homeStats.fg_pct}%)`}
+                    } (${homeStats.fg_pct}%)`}
                 homeWidth={homeStats.fg_pct}
                 awayLabel={`${awayStats.fgm}/${
                     awayStats.fga
-                } (${awayStats.fg_pct}%)`}
+                    } (${awayStats.fg_pct}%)`}
                 awayWidth={awayStats.fg_pct}
             />
 
@@ -42,11 +43,11 @@ const TeamStats = props => {
                 metric='3PT FG (%)'
                 homeLabel={`${homeStats.fg3m}/${
                     homeStats.fg3a
-                } (${homeStats.fg3_pct}%)`}
+                    } (${homeStats.fg3_pct}%)`}
                 homeWidth={homeStats.fg3_pct}
                 awayLabel={`${awayStats.fg3m}/${
                     awayStats.fg3a
-                } (${awayStats.fg3_pct}%)`}
+                    } (${awayStats.fg3_pct}%)`}
                 awayWidth={awayStats.fg3_pct}
             />
 
@@ -55,11 +56,11 @@ const TeamStats = props => {
                 metric='FT (%)'
                 homeLabel={`${homeStats.ftm}/${
                     homeStats.fta
-                } (${homeStats.ft_pct}%)`}
+                    } (${homeStats.ft_pct}%)`}
                 homeWidth={homeStats.ft_pct}
                 awayLabel={`${awayStats.ftm}/${
                     awayStats.fta
-                } (${awayStats.ft_pct}%)`}
+                    } (${awayStats.ft_pct}%)`}
                 awayWidth={awayStats.ft_pct}
             />
 
