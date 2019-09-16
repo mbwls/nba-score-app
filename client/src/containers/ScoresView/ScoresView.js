@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Layout, Row, Col } from 'antd';
+import Media from 'react-media';
 import DateNav from '../../components/DateNav/DateNav';
 import GameList from '../../components/GameList/GameList';
 import GameDetails from '../../components/GameDetails/GameDetails';
+import DateSelect from '../../components/DateNav/DateSelect/DateSelect';
 import 'antd/dist/antd.css';
 import './ScoresView.css';
 
@@ -16,44 +18,55 @@ const { Content } = Layout;
 class ScoresView extends Component {
     render() {
         return (
-            <div className='scores-view'>
-                <Layout>
-                    <Content>
+            <Media queries={{
+                small: '(max-width: 820px)',
+                large: '(min-width: 821px)'
+            }}>
+                {matches => (
+                    <div className='scores-view'>
                         <Layout>
-                            <Row className='header-content-row'>
-                                <h1 className='main-title'>NBA Scorecard</h1>
-                            </Row>
-                            <Row className='header-content-row'>
-                                <DateNav {...this.props} />
-                            </Row>
-                            <Row className='main-content-row'>
-                                <Col
-                                    className={`main-content-col content-game-list${
-                                        _.isEmpty(this.props.selectedGame)
-                                            ? ' open'
-                                            : ''
-                                        }`}
-                                    span={11}
-                                >
-                                    <GameList {...this.props} />
-                                </Col>
-                                <Col
-                                    className='main-content-col content-game-details'
-                                    span={13}
-                                >
-                                    <button
-                                        className='close-details'
-                                        onClick={() =>
-                                            this.props.setSelectedGame({})
-                                        }
-                                    />
-                                    <GameDetails {...this.props} />
-                                </Col>
-                            </Row>
+                            <Content>
+                                <Layout>
+                                    {matches.small && <Row className='header-content-row'>
+                                        <h1 className='main-title'>NBA Scorecard</h1>
+                                        <DateSelect {...this.props} />
+                                    </Row>}
+                                    {matches.large && <Row className='header-content-row'>
+                                        <h1 className='main-title'>NBA Scorecard</h1>
+                                    </Row>}
+                                    <Row className='header-content-row'>
+                                        <DateNav {...this.props} />
+                                    </Row>
+                                    <Row className='main-content-row'>
+                                        <Col
+                                            className={`main-content-col content-game-list${
+                                                _.isEmpty(this.props.selectedGame)
+                                                    ? ' open'
+                                                    : ''
+                                                }`}
+                                            span={11}
+                                        >
+                                            <GameList {...this.props} />
+                                        </Col>
+                                        <Col
+                                            className='main-content-col content-game-details'
+                                            span={13}
+                                        >
+                                            <button
+                                                className='close-details'
+                                                onClick={() =>
+                                                    this.props.setSelectedGame({})
+                                                }
+                                            />
+                                            <GameDetails {...this.props} />
+                                        </Col>
+                                    </Row>
+                                </Layout>
+                            </Content>
                         </Layout>
-                    </Content>
-                </Layout>
-            </div>
+                    </div>
+                )}
+            </Media>
         );
     }
 }

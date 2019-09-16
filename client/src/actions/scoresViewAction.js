@@ -74,7 +74,7 @@ export const actionCreators = {
         const playerStatsByTeam = (rawStats, team) => {
             return rawStats.filter(item => {
                 return (
-                    item.team.id ==
+                    item.team.id ===
                     getState().scoresView.selectedGame[`${team}_team`].id
                 );
             });
