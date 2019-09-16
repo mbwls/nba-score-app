@@ -21,6 +21,9 @@ class ScoresView extends Component {
                     <Content>
                         <Layout>
                             <Row className='header-content-row'>
+                                <h1 className='main-title'>NBA Scorecard</h1>
+                            </Row>
+                            <Row className='header-content-row'>
                                 <DateNav {...this.props} />
                             </Row>
                             <Row className='main-content-row'>
@@ -29,7 +32,7 @@ class ScoresView extends Component {
                                         _.isEmpty(this.props.selectedGame)
                                             ? ' open'
                                             : ''
-                                    }`}
+                                        }`}
                                     span={11}
                                 >
                                     <GameList {...this.props} />

@@ -10,10 +10,10 @@
     border-width: 0px 2px;
 }
 
-.ant-layout-content,
+/* .ant-layout-content, */
 .main-content-row,
 .main-content-col {
-    max-height: 90vh;
+    max-height: 80vh;
 }
 
 .content-game-list {
@@ -63,4 +63,11 @@ button.close-details {
 .ant-layout-header .ant-layout {
   height: 100%;
   background-color: white;
+}
+
+h1.main-title {
+  padding: 15px 30px;
+  font-size: 1.75em;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: bold;
 }
