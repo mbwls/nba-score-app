@@ -1,5 +1,6 @@
 .scores-view {
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     max-width: 1400px;
     margin-left: auto;
@@ -13,6 +14,7 @@
 .main-content-row,
 .main-content-col {
     max-height: 80vh;
+    max-height: calc(var(--vh, 1vh) * 80);
 }
 
 .content-game-list {
@@ -48,6 +50,7 @@ button.close-details {
 
 .header-content-row {
   max-height: 10vh;
+  max-height: calc(var(--vh, 1vh) * 10);
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px 0px;
 }

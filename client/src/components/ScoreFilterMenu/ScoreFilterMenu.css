@@ -1,5 +1,6 @@
 .score-filter-menu {
     height: 6vh;
+    height: calc(var(--vh, 1vh) * 6);
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px 0px;

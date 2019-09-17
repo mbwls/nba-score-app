@@ -1,6 +1,7 @@
 .game-list {
     width: 100%;
     height: 80vh;
+    height: calc(var(--vh, 1vh) * 80);
     overflow-x: hidden;
     overflow-y: scroll;
 }

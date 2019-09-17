@@ -5,6 +5,7 @@
     background: white;
     box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px -11px;
     height: 10vh;
+    height: calc(var(--vh, 1vh) * 10);
 }
 
 .date-nav ul {
