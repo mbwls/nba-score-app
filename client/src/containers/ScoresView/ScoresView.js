@@ -52,12 +52,7 @@ class ScoresView extends Component {
                                             className='main-content-col content-game-details'
                                             span={13}
                                         >
-                                            <button
-                                                className='close-details'
-                                                onClick={() =>
-                                                    this.props.setSelectedGame({})
-                                                }
-                                            />
+
                                             <GameDetails {...this.props} />
                                         </Col>
                                     </Row>

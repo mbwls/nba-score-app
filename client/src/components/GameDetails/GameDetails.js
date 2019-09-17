@@ -6,6 +6,12 @@ import TeamStats from './TeamStats/TeamStats';
 const GameDetails = props => {
     return (
         <div className='game-details'>
+            <button
+                className='close-details'
+                onClick={() =>
+                    props.setSelectedGame({})
+                }
+            />
             <DetailsHeader {...props} />
             {/* <BoxScore {...props} /> */}
             <TeamStats {...props} />
