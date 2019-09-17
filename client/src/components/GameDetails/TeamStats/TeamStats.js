@@ -27,6 +27,7 @@ const TeamStats = props => {
 
             {/* FIELD GOAL % */}
             <StatBar
+                {...props}
                 metric='FG (%)'
                 homeLabel={`${homeStats.fgm}/${
                     homeStats.fga
@@ -40,6 +41,7 @@ const TeamStats = props => {
 
             {/* 3PT FIELD GOAL % */}
             <StatBar
+                {...props}
                 metric='3PT FG (%)'
                 homeLabel={`${homeStats.fg3m}/${
                     homeStats.fg3a
@@ -53,6 +55,7 @@ const TeamStats = props => {
 
             {/* FREE THROW % */}
             <StatBar
+                {...props}
                 metric='FT (%)'
                 homeLabel={`${homeStats.ftm}/${
                     homeStats.fta
@@ -66,6 +69,7 @@ const TeamStats = props => {
 
             {/* REBOUNDS */}
             <StatBar
+                {...props}
                 metric='Rebounds'
                 homeLabel={homeStats.reb}
                 homeWidth={homeStats.reb}
@@ -75,6 +79,7 @@ const TeamStats = props => {
 
             {/* OFFENSIVE REBOUNDS */}
             <StatBar
+                {...props}
                 metric='Offensive Rebounds'
                 homeLabel={homeStats.oreb}
                 homeWidth={homeStats.oreb}
@@ -84,6 +89,7 @@ const TeamStats = props => {
 
             {/* ASSISTS */}
             <StatBar
+                {...props}
                 metric='Assists'
                 homeLabel={homeStats.ast}
                 homeWidth={homeStats.ast}
@@ -93,6 +99,7 @@ const TeamStats = props => {
 
             {/* STEALS */}
             <StatBar
+                {...props}
                 metric='Steals'
                 homeLabel={homeStats.stl}
                 homeWidth={homeStats.stl}
@@ -102,6 +109,7 @@ const TeamStats = props => {
 
             {/* BLOCKS */}
             <StatBar
+                {...props}
                 metric='Blocks'
                 homeLabel={homeStats.blk}
                 homeWidth={homeStats.blk}
@@ -111,6 +119,7 @@ const TeamStats = props => {
 
             {/* TURNOVERS */}
             <StatBar
+                {...props}
                 metric='Turnovers'
                 flip={true}
                 homeLabel={homeStats.turnover}
@@ -121,6 +130,7 @@ const TeamStats = props => {
 
             {/* PERSONAL FOULS */}
             <StatBar
+                {...props}
                 metric='Personal Fouls'
                 flip={true}
                 homeLabel={homeStats.pf}

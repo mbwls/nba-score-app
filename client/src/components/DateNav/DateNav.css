@@ -41,8 +41,8 @@
 }
 
 .current-date {
-    background: #00985f;
-    color: white;
+    background: #f2f4f7;
+    color: black;
 }
 
 /* START - OVERWRITING ANTD CLASSES */

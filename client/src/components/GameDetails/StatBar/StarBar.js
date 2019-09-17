@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import './StatBar.css';
 
 const StatBar = props => {
@@ -6,7 +7,7 @@ const StatBar = props => {
     let widthDiff = Math.abs(
         ((props.homeWidth - props.awayWidth) /
             ((props.homeWidth + props.awayWidth) / 2)) *
-            50
+        50
     );
 
     widthDiff >= 50
@@ -25,7 +26,8 @@ const StatBar = props => {
                 style={{
                     width: `calc(${
                         homeWin ? 50 + widthDiff : 50 - widthDiff
-                    }% - 10px)`
+                        }% - 10px)`,
+                    backgroundColor: _.isEmpty(props.selectedGame) ? 'default' : props.teamColours[props.selectedGame.visitor_team.abbreviation]
                 }}
             />
             <div
@@ -33,7 +35,8 @@ const StatBar = props => {
                 style={{
                     width: `calc(${
                         homeWin ? 50 - widthDiff : 50 + widthDiff
-                    }% - 10px)`
+                        }% - 10px)`,
+                        backgroundColor: _.isEmpty(props.selectedGame) ? 'default' : props.teamColours[props.selectedGame.home_team.abbreviation]   
                 }}
             />
         </div>
