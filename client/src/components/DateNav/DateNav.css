@@ -5,6 +5,7 @@
     background: white;
     box-shadow: rgba(0, 0, 0, 0.05) 0 3px 11px -11px;
     height: 10vh;
+    height: calc(var(--vh, 1vh) * 10);
 }
 
 .date-nav ul {
@@ -40,8 +41,8 @@
 }
 
 .current-date {
-    background: #00985f;
-    color: white;
+    background: #f2f4f7;
+    color: black;
 }
 
 /* START - OVERWRITING ANTD CLASSES */
