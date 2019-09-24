@@ -108,7 +108,7 @@ const DateNav = props => {
                                                     ? 'current-date date-label'
                                                     : 'date-label'
                                             }
-                                            onClick={() => props.setScoresDate(d)}
+                                            onClick={() => { props.setSelectedGame({}); props.setScoresDate(d); }}
                                         >
                                             {d.startOf('day').isSame(APPCONST.TODAY)
                                                 ? 'Today'

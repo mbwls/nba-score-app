@@ -31,12 +31,15 @@ const StatBar = props => {
                 }}
             />
             <div
+                className='bar-spacer'
+            />
+            <div
                 className='bar away'
                 style={{
                     width: `calc(${
                         homeWin ? 50 - widthDiff : 50 + widthDiff
                         }% - 10px)`,
-                        backgroundColor: _.isEmpty(props.selectedGame) ? 'default' : props.teamColours[props.selectedGame.home_team.abbreviation]   
+                    backgroundColor: _.isEmpty(props.selectedGame) ? 'default' : props.teamColours[props.selectedGame.home_team.abbreviation]
                 }}
             />
         </div>
