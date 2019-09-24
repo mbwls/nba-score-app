@@ -32,14 +32,23 @@
 .bar {
     height: 8px;
     display: inline-block;
-    margin: 5px;
+    margin: 1%;
     transition: 0.5s;
+    min-width: 1%;
+    max-width: 95%;
 }
 .bar.home {
-    background-color: #333;
     border-radius: 3px 0 0 3px;
+    margin: 5px 0 5px 5px;
 }
 .bar.away {
-    background-color: #00985f;
     border-radius: 0 3px 3px 0;
+    margin: 5px 5px 5px 0;
+}
+.bar-spacer {
+    width: 1%;
+    height: 8px;
+    display: inline-block;
+    max-width: 10px;
+    min-width: 2px;
 }
