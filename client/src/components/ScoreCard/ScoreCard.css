@@ -58,6 +58,13 @@
 }
 
 /* RESPONSIVE */
+@media (max-width: 1024px) {
+    .main-content-col.content-game-list:not(.open) .game-score {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 820px) {
     .game-score {
         font-size: 14px;
