@@ -2,11 +2,13 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import * as ScoresView from '../reducers/scoresViewReducer';
+import * as CompareView from '../reducers/compareViewReducer';
 
 const configureStore = () => {
     // ALL REDUCERS FOR APP
     const reducers = {
-        scoresView: ScoresView.reducer
+        scoresView: ScoresView.reducer,
+        compareView: CompareView.reducer
     };
 
     // LOGGER FOR DEV PURPOSES
