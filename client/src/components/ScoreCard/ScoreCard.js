@@ -22,6 +22,7 @@ const ScoreCard = props => {
     const awayTeamData = getTeamDataByID(props.gameData.visitor_team.id);
     const homeWin =
         props.gameData.home_team_score > props.gameData.visitor_team_score;
+    const gameComplete = props.gameData.status === 'Final';
 
     const scoreCardClick = () => {
         props.setSelectedGame(props.gameData);
@@ -46,14 +47,14 @@ const ScoreCard = props => {
                             <div className='team-info away'>
                                 {matches.medium && <span
                                     className='team-name'
-                                    style={!homeWin ? { fontWeight: 'bold' } : null}
+                                    style={!homeWin && gameComplete ? { fontWeight: 'bold' } : null}
                                 >
                                     {`${awayTeamData.name}`}
                                 </span>}
 
                                 {matches.large && <span
                                     className='team-name'
-                                    style={!homeWin ? { fontWeight: 'bold' } : null}
+                                    style={!homeWin && gameComplete ? { fontWeight: 'bold' } : null}
                                 >
                                     {`${awayTeamData.city} ${awayTeamData.name}`}
                                 </span>}
@@ -82,15 +83,15 @@ const ScoreCard = props => {
                             </div>
 
                             <div className='game-score'>
-                                <span style={!homeWin ? { fontWeight: 'bold' } : null}>
+                                <span style={!homeWin && gameComplete ? { fontWeight: 'bold' } : null}>
                                     {props.gameData.visitor_team_score}
                                 </span>
                                 <span> - </span>
-                                <span style={homeWin ? { fontWeight: 'bold' } : null}>
+                                <span style={homeWin && gameComplete ? { fontWeight: 'bold' } : null}>
                                     {props.gameData.home_team_score}
                                 </span>
                                 <br />
-                                <span className='game-time'>Final</span>
+                                <span className='game-time'>{props.gameData.status}</span>
                             </div>
 
                             <div className='team-info home'>
@@ -118,14 +119,14 @@ const ScoreCard = props => {
 
                                 {matches.medium && <span
                                     className='team-name'
-                                    style={homeWin ? { fontWeight: 'bold' } : null}
+                                    style={homeWin && gameComplete ? { fontWeight: 'bold' } : null}
                                 >
                                     {`${homeTeamData.name}`}
                                 </span>}
 
                                 {matches.large && <span
                                     className='team-name'
-                                    style={homeWin ? { fontWeight: 'bold' } : null}
+                                    style={homeWin && gameComplete ? { fontWeight: 'bold' } : null}
                                 >
                                     {`${homeTeamData.city} ${homeTeamData.name}`}
                                 </span>}

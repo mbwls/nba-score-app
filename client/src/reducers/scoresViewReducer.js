@@ -2,7 +2,8 @@ import moment from 'moment';
 import { actionTypes } from '../actions/scoresViewAction';
 
 const initialState = {
-    dateKey: moment('20190306'),
+    // set to mid-2018/19 season if current date is before start of 2019/20 season for demonstration purposes
+    dateKey: moment().isBefore(moment('20191023')) ? moment('20190306') : moment().subtract(1, 'days').startOf('day'),
     scoresData: [],
     referenceData: [],
     selectedGame: {},
