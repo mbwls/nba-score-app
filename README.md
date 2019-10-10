@@ -1,6 +1,6 @@
 # NBA Scorecard
 
-Daily basketball scores with game-by-game statistical breakdowns. Test Test
+Daily basketball scores with game-by-game statistical breakdowns.
 
 ## Getting Started
 
